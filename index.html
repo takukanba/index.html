@@ -1,596 +1,435 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>こどもの行動相談室 | 神庭拓也</title>
-  <meta name="description" content="毎日の困りごとを、一緒に整理する場所。ABA・行動分析の視点から、お子さんの行動の理由を丁寧に読み解きます。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HELLO ｜ いつもの場所で、その子を知る。</title>
+<meta name="description" content="実際に暮らしている環境でお子さんを理解し、手助けの方法をご家族と一緒につくる、家庭訪問の行動支援相談です。横浜。現在準備中。">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="HELLO ｜ いつもの場所で、その子を知る。">
+<meta property="og:description" content="難しさが起きている場所だから、わかることがあります。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6;
+    --paper-2:#F1F2ED;
+    --ink:#22282A;
+    --ink-2:#5C6663;
+    --line:#D8DCD5;
+    --accent:#3F6152;
+    --lamp:#BE8B39;
+    --mincho:"Zen Old Mincho", serif;
+    --gothic:"Zen Kaku Gothic New", system-ui, sans-serif;
+    --gap:clamp(56px, 11vw, 104px);
+  }
 
-    :root {
-      --ecru: #F6F2EB;
-      --ecru-dark: #EDE8DF;
-      --warm-white: #FDFAF6;
-      --ink: #1E1C18;
-      --ink-mid: #4A4740;
-      --ink-light: #7A776F;
-      --moss: #3D5C38;
-      --moss-mid: #5A7D55;
-      --moss-pale: #E8EEE6;
-      --sand: #C4A882;
-      --border: #D8D2C8;
-      --font-serif: 'Noto Serif JP', 'EB Garamond', serif;
-      --font-sans: 'Noto Sans JP', sans-serif;
-      --font-roman: 'EB Garamond', serif;
+  *{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--gothic);
+    font-size:16px;
+    line-height:2;
+    font-feature-settings:"palt" 1;
+    letter-spacing:.02em;
+  }
+
+  a{color:inherit;}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:740px;
+    margin:0 auto;
+    padding:0 22px;
+  }
+
+  /* ---- the thread: one hairline running the length of the page ---- */
+  .thread{
+    position:relative;
+    padding-left:0;
+  }
+  @media (min-width:820px){
+    .thread{padding-left:46px;}
+    .thread::before{
+      content:"";
+      position:absolute;
+      left:0; top:6px; bottom:0;
+      width:1px;
+      background:var(--line);
     }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--ecru);
-      color: var(--ink);
-      line-height: 1.85;
-      font-size: 16px;
-      font-weight: 300;
+    .block{position:relative;}
+    .block::before{
+      content:"";
+      position:absolute;
+      left:-50px; top:12px;
+      width:7px; height:7px;
+      background:var(--paper);
+      border:1px solid var(--accent);
     }
+  }
 
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(246, 242, 235, 0.96);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.22em;
+    color:var(--ink-2);
+    margin:0 0 18px;
+    line-height:1.6;
+  }
 
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 14px;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-    }
+  /* ---- hero ---- */
+  .hero{
+    padding:clamp(72px,16vw,140px) 0 var(--gap);
+  }
+  .mark{
+    font-family:var(--mincho);
+    font-weight:400;
+    font-size:clamp(46px,13vw,86px);
+    letter-spacing:.14em;
+    line-height:1;
+    margin:0 0 clamp(28px,6vw,44px);
+    animation:rise .9s ease-out both;
+  }
+  .mark .dot{color:var(--lamp);}
+  .hero h1{
+    font-family:var(--mincho);
+    font-weight:600;
+    font-size:clamp(21px,5.6vw,31px);
+    line-height:1.85;
+    letter-spacing:.05em;
+    margin:0 0 20px;
+    animation:rise .9s .12s ease-out both;
+  }
+  .hero p{
+    margin:0;
+    color:var(--ink-2);
+    font-size:15px;
+    animation:rise .9s .22s ease-out both;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:none;}
+  }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+  /* ---- generic block ---- */
+  .block{
+    padding-bottom:var(--gap);
+  }
+  .block h2{
+    font-family:var(--mincho);
+    font-weight:600;
+    font-size:clamp(18px,4.6vw,23px);
+    line-height:1.8;
+    letter-spacing:.05em;
+    margin:0 0 24px;
+  }
+  .block p{margin:0 0 18px;}
+  .block p:last-child{margin-bottom:0;}
+  .lede{font-size:16px;}
+  .muted{color:var(--ink-2); font-size:14.5px;}
 
-    .nav-links a {
-      font-size: 12px;
-      color: var(--ink-light);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      transition: color 0.2s;
-    }
+  /* ---- sequence: 見る わかる 試す 残す ---- */
+  .steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-top:1px solid var(--line);
+  }
+  .steps li{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    column-gap:18px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .steps .n{
+    font-family:var(--mincho);
+    font-size:12px;
+    letter-spacing:.1em;
+    color:var(--accent);
+    padding-top:9px;
+  }
+  .steps h3{
+    font-family:var(--mincho);
+    font-size:19px;
+    font-weight:600;
+    letter-spacing:.12em;
+    margin:0 0 6px;
+    line-height:1.6;
+  }
+  .steps p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--ink-2);
+    line-height:1.95;
+  }
 
-    .nav-links a:hover { color: var(--moss); }
+  /* ---- promises ---- */
+  .promises{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .promises li{
+    padding:26px 0 24px;
+    border-bottom:1px solid var(--line);
+  }
+  .promises li:first-child{border-top:1px solid var(--line);}
+  .promises h3{
+    font-family:var(--mincho);
+    font-size:17.5px;
+    font-weight:600;
+    letter-spacing:.04em;
+    line-height:1.7;
+    margin:0 0 8px;
+  }
+  .promises p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--ink-2);
+    line-height:1.95;
+  }
 
-    /* HERO */
-    .hero {
-      padding: 80px 32px 72px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
+  /* ---- scope ---- */
+  .scope{
+    background:var(--paper-2);
+    padding:clamp(26px,6vw,38px);
+  }
+  .scope ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .scope li{
+    padding:11px 0 11px 22px;
+    position:relative;
+    font-size:15px;
+    line-height:1.9;
+  }
+  .scope li::before{
+    content:"";
+    position:absolute;
+    left:0; top:20px;
+    width:9px; height:1px;
+    background:var(--accent);
+  }
 
-    .hero-eyebrow {
-      font-family: var(--font-roman);
-      font-size: 13px;
-      color: var(--ink-light);
-      letter-spacing: 0.12em;
-      margin-bottom: 28px;
-      display: block;
-    }
+  /* ---- faq ---- */
+  .faq{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .faq li{
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .faq li:first-child{border-top:1px solid var(--line);}
+  .faq h3{
+    font-size:15.5px;
+    font-weight:500;
+    margin:0 0 8px;
+    line-height:1.8;
+  }
+  .faq p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--ink-2);
+    line-height:1.95;
+  }
 
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(26px, 5vw, 38px);
-      font-weight: 400;
-      line-height: 1.6;
-      letter-spacing: 0.04em;
-      color: var(--ink);
-      margin-bottom: 28px;
-    }
+  /* ---- status ---- */
+  .status{
+    border:1px solid var(--line);
+    padding:clamp(24px,6vw,34px);
+  }
+  .status .eyebrow{color:var(--lamp);}
+  .status p{font-size:14.5px; color:var(--ink-2);}
 
-    .hero-sub {
-      font-size: 15px;
-      color: var(--ink-mid);
-      line-height: 2;
-      margin-bottom: 40px;
-      font-weight: 300;
-    }
+  /* ---- footer ---- */
+  footer{
+    border-top:1px solid var(--line);
+    margin-top:20px;
+    padding:38px 0 64px;
+    font-size:13px;
+    color:var(--ink-2);
+    line-height:2.1;
+  }
+  footer .fmark{
+    font-family:var(--mincho);
+    font-size:17px;
+    letter-spacing:.16em;
+    color:var(--ink);
+    display:block;
+    margin-bottom:12px;
+  }
+  footer a{text-decoration:none; border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--accent);}
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 44px;
-    }
-
-    .badge {
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      color: var(--moss);
-      border: 1px solid var(--moss-mid);
-      padding: 5px 12px;
-      border-radius: 2px;
-      background: var(--moss-pale);
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--moss);
-      color: #fff;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      padding: 14px 28px;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover { background: var(--moss-mid); }
-
-    .btn-instagram {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 13px;
-      color: var(--ink-mid);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-
-    .btn-instagram:hover { color: var(--moss); }
-
-    /* DIVIDER */
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--sand);
-      margin: 0 auto;
-    }
-
-    /* SECTION */
-    section {
-      padding: 72px 32px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: var(--font-roman);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: var(--ink-light);
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      display: block;
-    }
-
-    section h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(20px, 3.5vw, 26px);
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-      color: var(--ink);
-      line-height: 1.65;
-    }
-
-    section p {
-      color: var(--ink-mid);
-      font-size: 15px;
-      line-height: 2;
-      margin-bottom: 20px;
-      font-weight: 300;
-    }
-
-    /* TROUBLES */
-    .troubles-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .troubles-list li {
-      font-size: 15px;
-      color: var(--ink-mid);
-      padding: 16px 20px;
-      background: var(--warm-white);
-      border-left: 2px solid var(--sand);
-      border-radius: 1px;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* STEPS */
-    .steps {
-      display: grid;
-      gap: 0;
-      margin-top: 32px;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 20px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-
-    .step:last-child { border-bottom: none; }
-
-    .step-num {
-      font-family: var(--font-roman);
-      font-size: 22px;
-      color: var(--sand);
-      font-style: italic;
-      line-height: 1.3;
-      padding-top: 2px;
-    }
-
-    .step-title {
-      font-family: var(--font-serif);
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 8px;
-      letter-spacing: 0.03em;
-    }
-
-    .step-desc {
-      font-size: 14px;
-      color: var(--ink-light);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .step-price {
-      display: inline-block;
-      font-family: var(--font-roman);
-      font-size: 13px;
-      color: var(--moss);
-      margin-top: 8px;
-      letter-spacing: 0.04em;
-    }
-
-    /* PROFILE */
-    .profile-inner {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 40px;
-      margin-top: 8px;
-    }
-
-    .profile-name {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
-    }
-
-    .profile-name-en {
-      font-family: var(--font-roman);
-      font-size: 13px;
-      color: var(--ink-light);
-      letter-spacing: 0.1em;
-      margin-bottom: 24px;
-      display: block;
-    }
-
-    .profile-text {
-      font-size: 14px;
-      color: var(--ink-mid);
-      line-height: 2;
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
-
-    .profile-creds {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-    }
-
-    .profile-creds li {
-      font-size: 11px;
-      color: var(--ink-light);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 2px;
-      letter-spacing: 0.04em;
-    }
-
-    /* CONTACT */
-    .contact-box {
-      background: var(--moss-pale);
-      border: 1px solid #C8D9C5;
-      border-radius: 4px;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .contact-box h3 {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 12px;
-      color: var(--ink);
-      letter-spacing: 0.04em;
-    }
-
-    .contact-box p {
-      font-size: 14px;
-      color: var(--ink-mid);
-      margin-bottom: 28px;
-      font-weight: 300;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 32px;
-      text-align: center;
-    }
-
-    .footer-name {
-      font-family: var(--font-serif);
-      font-size: 14px;
-      letter-spacing: 0.06em;
-      color: var(--ink-mid);
-      margin-bottom: 8px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      list-style: none;
-      margin-bottom: 20px;
-    }
-
-    .footer-links a {
-      font-size: 12px;
-      color: var(--ink-light);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--moss); }
-
-    .footer-copy {
-      font-family: var(--font-roman);
-      font-size: 12px;
-      color: var(--ink-light);
-      letter-spacing: 0.06em;
-    }
-
-    /* FADE IN */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-      nav { padding: 0 20px; }
-      .nav-links { gap: 20px; }
-      .hero, section { padding-left: 20px; padding-right: 20px; }
-      .profile-inner, .contact-box { padding: 28px 20px; }
-    }
-  </style>
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">こどもの行動相談室</a>
-    <ul class="nav-links">
-      <li><a href="#about">相談室について</a></li>
-      <li><a href="#flow">ご利用の流れ</a></li>
-      <li><a href="#profile">プロフィール</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
-    </ul>
-  </nav>
+<main class="wrap">
 
-  <!-- HERO -->
-  <div class="hero fade-in">
-    <span class="hero-eyebrow">Behavior Consultation for Children</span>
-    <h1>毎日の困りごとを、<br>一緒に整理する場所。</h1>
-    <p class="hero-sub">
-      「どうしてこんなことをするんだろう」と思ったとき、<br>
-      行動にはかならず理由があります。<br>
-      ABA（応用行動分析）の視点から、お子さんの行動を丁寧に読み解き、<br>
-      家庭でできる関わり方をご提案します。
-    </p>
-    <div class="hero-badges">
-      <span class="badge">ABA・応用行動分析</span>
-      <span class="badge">ABAT認定資格</span>
-      <span class="badge">機能的行動アセスメント</span>
-      <span class="badge">保護者向け個別相談</span>
-    </div>
-    <div class="cta-row">
-      <a href="#contact" class="btn-primary">無料相談を申し込む</a>
-      <a href="https://www.instagram.com/takukanba/" target="_blank" class="btn-instagram">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-        </svg>
-        @takukanba
-      </a>
-    </div>
+  <section class="hero">
+    <p class="mark">HELLO<span class="dot">.</span></p>
+    <h1>いつもの場所で、その子を知る。</h1>
+    <p>難しさが起きている場所だから、わかることがあります。</p>
+  </section>
+
+  <div class="thread">
+
+    <section class="block">
+      <p class="eyebrow">HELLOとは</p>
+      <h2>ご家庭に伺って、その子の「難しくなる場面」を一緒に見つけます。</h2>
+      <p class="lede">お子さんの行動について困っているご家族のところへ伺い、実際に暮らしている環境でその子を理解し、手助けの方法をご家族と一緒につくる、家庭訪問の相談サービスです。</p>
+      <p class="lede">相談室の中で話を聞くだけでは、いつものリビングや食事や着替えの場面で何が起きているかは見えません。難しさが生まれている場所に伺うのは、そこにしかない情報があるからです。</p>
+      <p class="muted">お子さんをお預かりする場所ではありません。保護者の方には必ず同席していただきます。</p>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">HELLOがすること</p>
+      <h2>見る、わかる、試す、残す。</h2>
+      <ol class="steps">
+        <li>
+          <span class="n">1</span>
+          <div>
+            <h3>見る</h3>
+            <p>いつものリビング、食事、着替え、遊び、家族とのやり取り。難しさが実際に生まれている場面を、その場所で確認します。</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <div>
+            <h3>わかる</h3>
+            <p>いつ、どこで、何の直前に難しくなるのか。ばらばらに見えていた出来事を、一枚の紙に整理します。</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <div>
+            <h3>試す</h3>
+            <p>その家にあるもの、その家の動き方に合わせて、手助けの方法を組み立てます。一般論はお渡ししません。</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">4</span>
+          <div>
+            <h3>残す</h3>
+            <p>うまくいった方法を、ご家族が続けられる形にして残します。HELLOが来なくなってからが本番です。</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">6つの約束</p>
+      <h2>HELLOがご家庭にお約束すること。</h2>
+      <ul class="promises">
+        <li>
+          <h3>家で、実際に見ます。</h3>
+          <p>お話だけで判断せず、可能な範囲で普段の場面を見せていただきます。</p>
+        </li>
+        <li>
+          <h3>「難しくなる場面」を、一枚にします。</h3>
+          <p>園や学校、祖父母の方にもそのままお渡しできる形でお作りします。</p>
+        </li>
+        <li>
+          <h3>その家にあるもので、方法を組み立てます。</h3>
+          <p>「これを買っておいてください」から始めません。</p>
+        </li>
+        <li>
+          <h3>必要な道具は、こちらで用意します。</h3>
+          <p>カードやタイマーなど、使うものはお持ちして、置いていきます。</p>
+        </li>
+        <li>
+          <h3>ご家族の記録は、1日1分。</h3>
+          <p>支援のために家庭の生活そのものが重くならないようにします。</p>
+        </li>
+        <li>
+          <h3>最後は、ご家族に残します。</h3>
+          <p>終わるときに、次の場所へ引き継げる資料をお渡しします。</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">対象と範囲</p>
+      <h2>できること、できないこと。</h2>
+      <div class="scope">
+        <ul>
+          <li>保護者の方の同席を原則としています。</li>
+          <li>お子さんのお預かりはしていません。</li>
+          <li>ご自宅への訪問が基本です。伺える範囲には限りがあります。</li>
+          <li>完全予約制です。</li>
+          <li>医療機関ではありません。診断や治療は行いません。</li>
+          <li>診断の有無は問いません。困っている場面があれば対象です。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">記録と個人情報</p>
+      <h2>お預かりする情報の扱い。</h2>
+      <p class="lede">相談の記録、写真、動画は、目的・保存する場所・保存する期間・削除の方法をご説明し、書面で同意をいただいた範囲でのみ扱います。</p>
+      <p class="muted">撮影は必須ではありません。同意はいつでも取り消せます。</p>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">よくある質問</p>
+      <h2>はじめてのご家庭から、よく聞かれること。</h2>
+      <ul class="faq">
+        <li>
+          <h3>子どもだけ見てもらうことはできますか。</h3>
+          <p>できません。保護者の方に同席していただくことを原則にしています。何をどうしているかが、すべて見える状態でお渡ししたいからです。</p>
+        </li>
+        <li>
+          <h3>どんなことで困っている家庭が対象ですか。</h3>
+          <p>かんしゃく、切り替えの難しさ、外出や食事の場面での困りごとなど、日常生活の場面で起きている困りごとです。</p>
+        </li>
+        <li>
+          <h3>どのくらいの回数、続けるのですか。</h3>
+          <p>回数は増やすのではなく、減らしていく設計です。ご家庭でうまくいく状態になることを目標にしています。</p>
+        </li>
+        <li>
+          <h3>いま通っている園や事業所とは、どう関係しますか。</h3>
+          <p>置き換えるものではありません。ご希望があれば、整理した内容を共有できる形でお渡しします。</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <div class="status">
+        <p class="eyebrow">現在の状況</p>
+        <h2>ただいま準備中です。</h2>
+        <p>サービスの内容と提供体制を整えているところです。開始の時期、料金、ご相談の受付方法が決まりましたら、このページとInstagramでお知らせします。</p>
+      </div>
+    </section>
+
   </div>
 
-  <div class="divider"></div>
+</main>
 
-  <!-- ABOUT -->
-  <section id="about" class="fade-in">
-    <span class="section-label">About</span>
-    <h2>こんなお悩みはありませんか？</h2>
-    <p>
-      日常のなかで、お子さんの行動に困惑したり、対応に悩んだりすることはありませんか。
-      そのような場面を一緒に整理し、行動の背景にある「理由」を探っていきます。
-    </p>
-    <ul class="troubles-list">
-      <li>かんしゃくがひどく、どう対応すればいいかわからない</li>
-      <li>言葉でうまく伝えられず、叩いたり噛んだりしてしまう</li>
-      <li>療育に通っているが、家での関わり方がわからない</li>
-      <li>保育園・幼稚園・学校から指摘を受けたが、どうすればいいか迷っている</li>
-      <li>特定のことへのこだわりが強く、切り替えが難しい</li>
-      <li>診断はないが、育てにくさを感じている</li>
-    </ul>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- FLOW -->
-  <section id="flow" class="fade-in">
-    <span class="section-label">Flow &amp; Fee</span>
-    <h2>ご利用の流れ</h2>
-    <p>
-      まずはお気軽にご相談ください。オンライン（Zoom）で対応しています。
-    </p>
-    <div class="steps">
-      <div class="step">
-        <span class="step-num">1</span>
-        <div>
-          <p class="step-title">無料相談（30分）</p>
-          <p class="step-desc">現在の困りごとをお聞きし、相談室での支援が合っているかを一緒に確認します。</p>
-          <span class="step-price">無料</span>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">2</span>
-        <div>
-          <p class="step-title">個別相談セッション（60分）</p>
-          <p class="step-desc">行動の背景を整理し、家庭でできる具体的な対応方法をご提案します。</p>
-          <span class="step-price">¥8,000 / 回</span>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">3</span>
-        <div>
-          <p class="step-title">機能的行動アセスメント</p>
-          <p class="step-desc">問題行動の「なぜ」を科学的に分析します。観察・面接をもとに行動の機能を特定し、支援計画を作成します。</p>
-          <span class="step-price">¥20,000〜</span>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">4</span>
-        <div>
-          <p class="step-title">問題行動解決支援・スキルトレーニング・パッケージ（複数回）</p>
-          <p class="step-desc">アセスメントから支援の実施・評価まで継続的にサポートします。保護者トレーニングを含む包括的なプログラムです。</p>
-          <span class="step-price">¥50,000〜80,000</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PROFILE -->
-  <section id="profile" class="fade-in">
-    <span class="section-label">Profile</span>
-    <h2>担当者について</h2>
-    <div class="profile-inner">
-      <p class="profile-name">神庭 拓也</p>
-      <span class="profile-name-en">Takuya Kamba</span>
-      <p class="profile-text">
-        横浜市内の児童発達支援・放課後等デイサービスにて、療育マネージャー・スーパーバイザー・
-        児童発達支援管理責任者として勤務。ABAを中心とした支援を実践しています。
-      </p>
-      <p class="profile-text">
-        専門は機能アセスメント・スキルトリートメント。
-        研究に基づく行動支援を、家庭や療育現場に届けることを目指しています。
-      </p>
-      <p class="profile-text">
-        保護者の方が「わかった」と感じられる瞬間を大切にしています。
-        専門用語ではなく、日常の言葉で一緒に考えます。
-      </p>
-      <ul class="profile-creds">
-        <li>ABAT（行動分析技術士）認定</li>
-        <li>QASP-S 取得に向け研修中</li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- CONTACT -->
-  <section id="contact" class="fade-in">
-    <span class="section-label">Contact</span>
-    <div class="contact-box">
-      <h3>まずは無料相談から</h3>
-      <p>
-        お子さんの行動について、気になることがあればお気軽にご連絡ください。<br>
-        Instagramのメッセージからもお受けしています。
-      </p>
-      <a href="https://www.instagram.com/takukanba/" target="_blank" class="btn-primary">
-        Instagram でメッセージを送る
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p class="footer-name">こどもの行動相談室</p>
-    <ul class="footer-links">
-      <li><a href="#about">相談室について</a></li>
-      <li><a href="#flow">ご利用の流れ</a></li>
-      <li><a href="#profile">プロフィール</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
-    </ul>
-    <p class="footer-copy">&copy; 2025 Takuya Kamba. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+<footer class="wrap">
+  <span class="fmark">HELLO.</span>
+  いつもの場所で、その子を知る。<br>
+  神奈川県横浜市<br>
+  <a href="https://www.instagram.com/takukanba/" rel="noopener">Instagram @takukanba</a>
+</footer>
 
 </body>
 </html>
